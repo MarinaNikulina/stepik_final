@@ -15,4 +15,10 @@ class BasePage():
         except (NoSuchElementException):
             return False
         return True    
+    def is_in(self,subStr,fullStr):
+        if subStr in fullStr:
+            return True
+        else:
+            return False
+        
     
