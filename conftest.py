@@ -8,7 +8,8 @@ def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
                      help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default="en",
-                     help="Choose language: '--language=x' where x is one of the: ru, fr, es, ....")                 
+                     help="Choose language: '--language=x' where x is one of the: ru, fr, es, ....")
+                     
 @pytest.fixture(scope="function")
 def browser(request):
     browser_name = request.config.getoption("browser_name")
@@ -33,3 +34,8 @@ def browser(request):
     yield browser
     print("\nquit browser..")
     browser.quit()
+    
+@pytest.fixture()
+def link_main(request):
+    return "http://selenium1py.pythonanywhere.com/"
+    
