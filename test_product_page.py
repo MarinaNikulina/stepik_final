@@ -39,7 +39,7 @@ class TestGuestAddToBasketFromProductPage():
     
     @pytest.mark.need_review
     def test_guest_can_add_product_to_basket(self, prod_page):
-        prod_page.add_to_basket()                 # добавлЯем товар в корзину
+        prod_page.add_to_basket()                 # РґРѕР±Р°РІР»СЏРµРј С‚РѕРІР°СЂ РІ РєРѕСЂР·РёРЅСѓ
         
     @pytest.mark.xfail
     def test_message_disappeared_after_adding_product_to_basket(self, prod_page):
@@ -52,13 +52,13 @@ class TestUserAddToBasketFromProductPage():
     
     @pytest.fixture(autouse=True)
     def setup(request, browser, link_main):
-        page = MainPage(browser, link_main)     # инициализациЯ Page Object, передача в конструктор экземплЯра драйвера и url адреса 
-        page.open()                             # открываем страницу
-        page.go_to_login_page()                 # переход на страницу логина
+        page = MainPage(browser, link_main)     # РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Page Object, РїРµСЂРµРґР°С‡Р° РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЌРєР·РµРјРїР»СЏСЂР° РґСЂР°Р№РІРµСЂР° Рё url Р°РґСЂРµСЃР° 
+        page.open()                             # РѕС‚РєСЂС‹РІР°РµРј СЃС‚СЂР°РЅРёС†Сѓ
+        page.go_to_login_page()                 # РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ Р»РѕРіРёРЅР°
         login_page = LoginPage(browser, browser.current_url)
-        users_data = login_page.register_pass_log_generate()    # генерациЯ логина и паролЯ
-        login_page.register_new_user(* users_data)    # регистрациЯ нового пользователЯ
-        login_page.should_be_authorized_user()        # проверка, что пользователь залогинен 
+        users_data = login_page.register_pass_log_generate()    # РіРµРЅРµСЂР°С†РёСЏ Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ
+        login_page.register_new_user(* users_data)    # СЂРµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+        login_page.should_be_authorized_user()        # РїСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р»РѕРіРёРЅРµРЅ 
         
     @pytest.mark.xfail
     def test_user_cant_see_success_message_after_adding_product_to_basket(self, browser, link1):
@@ -69,30 +69,30 @@ class TestUserAddToBasketFromProductPage():
         
     @pytest.mark.need_review    
     def test_user_can_add_product_to_basket(self, browser, link1):
-        page = ProductPage(browser, link1)   # инициализируем Page Object, передаем в конструктор экземплЯр драйвера и url адрес 
+        page = ProductPage(browser, link1)   # РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј Page Object, РїРµСЂРµРґР°РµРј РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЌРєР·РµРјРїР»СЏСЂ РґСЂР°Р№РІРµСЂР° Рё url Р°РґСЂРµСЃ 
         page.open()                         
-        page.add_to_basket()                # добавлЯем товар в корзину
+        page.add_to_basket()                # РґРѕР±Р°РІР»СЏРµРј С‚РѕРІР°СЂ РІ РєРѕСЂР·РёРЅСѓ
         
 @pytest.mark.from_product_page        
 class TestSeeAndDoFromProductPage():
-    # гость видит ссылку на страницу регистрации
+    # РіРѕСЃС‚СЊ РІРёРґРёС‚ СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂРµРіРёСЃС‚СЂР°С†РёРё
     def test_guest_should_see_login_link_on_product_page(self, prod_page):
         prod_page.should_be_login_link()
     
-    # гость может перейти на страницу регистрации
+    # РіРѕСЃС‚СЊ РјРѕР¶РµС‚ РїРµСЂРµР№С‚Рё РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂРµРіРёСЃС‚СЂР°С†РёРё
     @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, prod_page):
         prod_page.go_to_login_page()
         
-    # гость видит ссылку на корзину
-    def test_guest_should_see_basket_link_on_product_page(self, prod_page):
+    # РіРѕСЃС‚СЊ РІРёРґРёС‚ СЃСЃС‹Р»РєСѓ РЅР° РєРѕСЂР·РёРЅСѓ
+    def test_guest_should_see_basket_link_on_product_page(self, prod_page ):
         prod_page.should_be_basket_link()
         
-    # гость может перейти на страницу регистрации
-    def test_guest_can_go_to_basket_page_from_product_page(self, prod_page):
+    # РіРѕСЃС‚СЊ РјРѕР¶РµС‚ РїРµСЂРµР№С‚Рё РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂРµРіРёСЃС‚СЂР°С†РёРё
+    def test_guest_can_go_to_basket_page_from_product_page(self, prod_page ):
         prod_page.go_to_basket_page()
      
-    # при открытии корзины из продукта гость не видит в ней товары
+    # РїСЂРё РѕС‚РєСЂС‹С‚РёРё РєРѕСЂР·РёРЅС‹ РёР· РїСЂРѕРґСѓРєС‚Р° РіРѕСЃС‚СЊ РЅРµ РІРёРґРёС‚ РІ РЅРµР№ С‚РѕРІР°СЂС‹
     @pytest.mark.need_review
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser, prod_page ):
         prod_page.go_to_basket_page()
@@ -100,6 +100,3 @@ class TestSeeAndDoFromProductPage():
         basket_page.is_basket_empty()
         basket_page.is_message_basket_empty_about()
     
-
-
-
