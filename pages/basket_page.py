@@ -20,6 +20,6 @@ class BasketPage(BasePage):
         EC.visibility_of_element_located(BasketPageLocators.EMPTY_MESSAGE),'Timed out waiting for empty_basket')
         message = self.browser.find_element(* BasketPageLocators.EMPTY_MESSAGE).text
         print(message)
-        assert "empty" in message, "Empty basket must be in alert message"
+        assert "empty" in message, "Empty basket must be in alert message "
         
         

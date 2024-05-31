@@ -22,7 +22,7 @@ class TestLoginFromMainPage():
 class TestBasketFromMainPage():
     # при открытии корзины из главной гость не видит в ней товары
     def test_guest_cant_see_product_in_basket_opened_from_main_page(browser, main_page):
-        main_page.go_to_basket_page()          #  переходим в корзину
+        main_page.go_to_basket_page()          # переходим в корзину
         basket_page = BasketPage(browser, browser.current_url)
         basket_page.is_basket_empty()
         basket_page.is_message_basket_empty_about()

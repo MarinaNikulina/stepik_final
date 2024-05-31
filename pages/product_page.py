@@ -46,7 +46,7 @@ class ProductPage(BasePage):
     # проверка, что в сообщении о добавлении есть цена, равная цене выбранного продукта 
     def should_be_alert_add_to_basket_product_cost(self, pr_cost):
         sendbox_cost = self.browser.find_element(* ProductPageLocators.COST_MESSAGE).text
-        assert pr_cost in sendbox_cost,"The products cost must be in alert message"
+        assert pr_cost in sendbox_cost,"The products cost must be in alert message "
     
     # проверка, что нет сообщения, что товар добавлен в корзину
     def should_not_be_success_message(self):

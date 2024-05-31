@@ -16,7 +16,7 @@ class LoginPageLocators():
     SUBMIT_BUTTON= (By.NAME, "registration_submit")
 
 class ProductPageLocators():
-    TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form")
+    TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form" )
     PRODUCT = (By.CSS_SELECTOR, ".product_main > h1")
     PRODUCT_COST =  (By.CSS_SELECTOR, ".product_main > p.price_color")
     SENDBOX = (By.CSS_SELECTOR, "#messages")

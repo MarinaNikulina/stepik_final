@@ -94,7 +94,7 @@ class TestSeeAndDoFromProductPage():
      
     # при открытии корзины из продукта гость не видит в ней товары
     @pytest.mark.need_review
-    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser, prod_page):
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser, prod_page ):
         prod_page.go_to_basket_page()
         basket_page = BasketPage(browser, browser.current_url)
         basket_page.is_basket_empty()

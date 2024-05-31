@@ -78,7 +78,7 @@ class BasePage():
         
     # проверка наличия ссылки на корзину      
     def should_be_basket_link(self):
-        assert self.is_element_present(* BasePageLocators.BASKET_LINK), "Basket link is not presented"        
+        assert self.is_element_present(* BasePageLocators.BASKET_LINK), "Basket link is not presented "        
 
         
                                                            
