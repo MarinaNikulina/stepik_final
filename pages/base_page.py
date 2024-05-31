@@ -7,10 +7,9 @@ import math
 import time
 
 class BasePage():
-    def __init__(self, browser, url):
+    def __init__(self, browser, url, ):
         self.browser = browser
         self.url = url
-        #self.browser.implicitly_wait(timeout)
   
     def open(self, timeout=4):
         self.browser.get(self.url)
@@ -30,9 +29,10 @@ class BasePage():
             return True
         return False
         
-    def is_element_clickable(self, how, what, timeout=4):
+    def is_disappeared(self, how, what, timeout=4):
         try:
-            WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what)))
+            WebDriverWait(self.browser, timeout, 1, TimeoutException).\
+                until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
         return True
@@ -43,6 +43,7 @@ class BasePage():
         else:
             return False
             
+    #обработка капчи        
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -55,8 +56,29 @@ class BasePage():
             print(f"Your code: {alert_text}")
             alert.accept()
         except NoAlertPresentException:
-            print("No second alert presented")    
-    
+            print("No second alert presented")
+            
+    # пользователь дб авторизован 
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                  " probably unauthorised user"
+    # переход на страницу логина
+    def go_to_login_page(self):
+        login_link = self.browser.find_element(* BasePageLocators.LOGIN_LINK)
+        login_link.click()
+        
+    # проверка наличия ссылки на логин      
+    def should_be_login_link(self):
+        assert self.is_element_present(* BasePageLocators.LOGIN_LINK), "Login link is not presented"                                                             
+                                                                 
+    # переход в корзину        
+    def go_to_basket_page(self):
+        basket_link = self.browser.find_element(* BasePageLocators.BASKET_LINK)
+        basket_link.click()
+        
+    # проверка наличия ссылки на корзину      
+    def should_be_basket_link(self):
+        assert self.is_element_present(* BasePageLocators.BASKET_LINK), "Basket link is not presented"        
+
+        
+                                                           

@@ -38,4 +38,12 @@ def browser(request):
 @pytest.fixture()
 def link_main(request):
     return "http://selenium1py.pythonanywhere.com/"
+
+@pytest.fixture()
+def main_page(request, browser, link_main):
+    page = MainPage(browser, link_main)     # инициализация Page Object, передача в конструктор экземпляра драйвера и url адреса 
+    page.open()
+    return page 
+    
+    
     
