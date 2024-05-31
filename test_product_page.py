@@ -88,7 +88,7 @@ class TestSeeAndDoFromProductPage():
     def test_guest_should_see_basket_link_on_product_page(self, prod_page ):
         prod_page.should_be_basket_link()
         
-    # гость может перейти на страницу регистрации
+    # гость может перейти в корзину
     def test_guest_can_go_to_basket_page_from_product_page(self, prod_page ):
         prod_page.go_to_basket_page()
      
