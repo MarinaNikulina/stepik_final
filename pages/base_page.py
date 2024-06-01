@@ -80,5 +80,4 @@ class BasePage():
     def should_be_basket_link(self):
         assert self.is_element_present(* BasePageLocators.BASKET_LINK), "Basket link is not presented "        
 
-        
                                                            
